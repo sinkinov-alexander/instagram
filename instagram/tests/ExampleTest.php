@@ -3,10 +3,8 @@
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
 
-class RootTest extends TestCase
+class ExampleTest extends TestCase
 {
-    use DatabaseMigrations;
-
     /**
      * A basic test example.
      *
@@ -14,9 +12,10 @@ class RootTest extends TestCase
      */
     public function testExample()
     {
-        $this->json('GET', '/')
-            ->seeJson([
+        $this->get('/');
 
-            ]);
+        $this->assertEquals(
+            $this->app->version(), $this->response->getContent()
+        );
     }
 }

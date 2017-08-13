@@ -12,5 +12,9 @@
 */
 
 $app->get('/', function () use ($app) {
-    return response()->json([]);
+    return $app->version();
+});
+
+$app->get('/key', function() use ($app) {
+
 });
